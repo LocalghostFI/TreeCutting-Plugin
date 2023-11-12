@@ -6,7 +6,7 @@
 
     <groupId>fi.localghost</groupId>
     <artifactId>treecutting</artifactId>
-    <version>10.0</version>
+    <version>12.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
