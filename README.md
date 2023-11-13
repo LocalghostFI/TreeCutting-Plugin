@@ -1,6 +1,6 @@
 ## TreeCutting-Source
 
-Piilotettu Source koodi. 
+MC pluginin Source koodi. 
 
 - Käyttää Spigot 1.20.2 API versiota. 
 - Sisältää oikeuden lisäämisen `treecutting.use`
