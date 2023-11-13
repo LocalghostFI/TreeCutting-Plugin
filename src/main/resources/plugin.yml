@@ -6,5 +6,5 @@
   description: Enables quick tree felling
   commands:
     treecutting:
-      description: Treecutting command
-      usage: /treecutting version
+      description: §6Treecutting command
+      usage: §6/treecutting §yversion
