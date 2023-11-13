@@ -8,10 +8,13 @@ Piilotettu Source koodi.
 
 ## Todo
 - [ ] Config.yml tiedosto debuggaukseen tms 
-- [ ] Tumman tammipuun tuki (Istutus)
+- [X] Tumman tammipuun tuki (Istutus)
 - [ ] Statistiikan lisääminen.
 
 ## Viimeisimmät muutokset:
+
+### 13.11.2023 A1
+- Lisätty Tumman tammen tuki kaatoon ja istutukseen
 
 ### 13.11.2023
 - Lisätty `/treecutting` komento: "version"

@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import java.util.*;
 
 public class TreeCutting extends JavaPlugin implements Listener {
 
@@ -86,13 +87,19 @@ public class TreeCutting extends JavaPlugin implements Listener {
             saplingType = Material.JUNGLE_SAPLING;
         } else if (treeType == Material.ACACIA_LOG) {
             saplingType = Material.ACACIA_SAPLING;
+        } else if (treeType == Material.DARK_OAK_LOG) {
+            saplingType = Material.DARK_OAK_SAPLING;
         } else if (treeType == Material.CHERRY_LOG) {
             saplingType = Material.CHERRY_SAPLING;
         }
 
-        int saplingCountToPlant = 1; // Istuta aina yksi sapling
+        int saplingCountToPlant = 1; // Oletuksena istutetaan aina yksi sapling
 
-        // Tarkista, onko saplingType voimassa ja löytyy invista
+        if (saplingType == Material.DARK_OAK_SAPLING) {
+            saplingCountToPlant = 4; // Istutetaan 2x2 (yhteensä 4)
+        }
+
+        // Tarkista, että pelaajalla on saplingType voimassa ja löytyy invista
         if (saplingType != Material.AIR) {
             int availableSaplings = 0;
 
@@ -102,27 +109,36 @@ public class TreeCutting extends JavaPlugin implements Listener {
                 }
             }
 
-            saplingCountToPlant = Math.min(1, availableSaplings); // Istuta enintään yksi, jos niitä on saatavilla
+            saplingCountToPlant = Math.min(saplingCountToPlant, availableSaplings);
         }
 
-        // Vähennä saplingin määrää inventaarissa
-        for (ItemStack item : inventory) {
-            if (item != null && item.getType() == saplingType) {
-                int itemAmount = item.getAmount();
-                if (saplingCountToPlant > 0) {
-                    item.setAmount(itemAmount - 1);
-                    break;
+        // Tarkista, että pelaajalla on saplingeja ennen istuttamista ja vähentää tarvittavan määrän
+        if (saplingCountToPlant > 0) {
+            for (ItemStack item : inventory) {
+                if (item != null && item.getType() == saplingType) {
+                    int itemAmount = item.getAmount();
+                    if (saplingCountToPlant > 0) {
+                        int saplingsToPlant = Math.min(saplingCountToPlant, itemAmount);
+                        item.setAmount(itemAmount - saplingsToPlant);
+                        saplingCountToPlant -= saplingsToPlant;
+                    }
                 }
             }
-        }
 
-        // Istuta sapling maahan pelaajan sijaintiin
-        if (saplingType != Material.AIR) {
-            for (int i = 0; i < height; i++) {
+            // Istuta taimet maahan pelaajan sijaintiin
+            if (saplingType == Material.DARK_OAK_SAPLING) {
+                for (int i = -1; i <= 0; i++) {
+                    for (int j = -1; j <= 0; j++) {
+                        player.getWorld().getBlockAt(player.getLocation().getBlockX() + i, player.getLocation().getBlockY(), player.getLocation().getBlockZ() + j).setType(saplingType);
+                    }
+                }
+            } else {
                 player.getLocation().add(0, 0, 0).getBlock().setType(saplingType);
             }
         }
     }
+
+
 
     private boolean isAxe(Material material) {
         return material == Material.WOODEN_AXE || material == Material.STONE_AXE ||
