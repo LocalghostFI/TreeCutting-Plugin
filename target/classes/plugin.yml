@@ -1,6 +1,10 @@
   name: TreeCutting
   main: fi.localghost.TreeCutting.TreeCutting
-  version: 11.0
+  version: 12.0A
   api-version: 1.20
   author: Mixerboy24 / LocalghostFI
   description: Enables quikc tree felling
+  commands:
+    treecutting:
+      description: Treecutting command
+      usage: /treecutting <version>

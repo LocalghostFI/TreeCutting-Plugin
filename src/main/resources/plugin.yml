@@ -3,4 +3,8 @@
   version: 12.0A
   api-version: 1.20
   author: Mixerboy24 / LocalghostFI
-  description: Enables quikc tree felling
+  description: Enables quick tree felling
+  commands:
+    treecutting:
+      description: Treecutting command
+      usage: /treecutting version

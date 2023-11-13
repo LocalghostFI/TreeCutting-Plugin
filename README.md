@@ -4,6 +4,7 @@ Piilotettu Source koodi.
 
 - Käyttää Spigot 1.20.2 API versiota. 
 - Sisältää oikeuden lisäämisen ```treecutting.use```
+- Sisätää komennon ```/treecutting```
 
 ## Todo
 - [ ] Config.yml tiedosto debuggaukseen tms 

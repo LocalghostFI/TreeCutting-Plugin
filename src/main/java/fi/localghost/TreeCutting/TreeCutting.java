@@ -3,6 +3,8 @@ package fi.localghost.TreeCutting;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,6 +17,16 @@ public class TreeCutting extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
+        getCommand("treecutting").setExecutor(this);
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length > 0 && args[0].equalsIgnoreCase("version")) {
+            sender.sendMessage("Treecutting " + getDescription().getVersion() + ", Update: 13.11.2023"); // Korvaa Update haluamallasi päivämäärällä
+            return true;
+        }
+        return false;
     }
 
     @EventHandler
