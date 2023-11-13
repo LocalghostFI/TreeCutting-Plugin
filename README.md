@@ -13,7 +13,10 @@ Install TreeCutting and save time on tree gathering in your game. You can now en
 Support Minecraft version 1.20.X
 
 
-MC pluginin Source koodi. 
+---
+Source and Source information in Finnish
+
+## MC pluginin Source koodi
 
 - Käyttää Spigot 1.20.2 API versiota. 
 - Sisältää oikeuden lisäämisen `treecutting.use`
